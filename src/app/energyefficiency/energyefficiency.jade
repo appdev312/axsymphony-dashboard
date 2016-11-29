@@ -1,0 +1,27 @@
+extends ../layouts/layout
+
+block pageTitle
+  h1.text-center {{vm.siteInfo.siteName}}
+
+block main
+  .container-fluid
+    .content-wrapper-xs
+      .row.text-center
+        .col-lg-10.col-lg-offset-1
+          h1 Energy Efficiency
+      .content-wrapper-xs#historic-chart
+        highchart.chart.col-sm-8.col-sm-offset-2(config='vm.chartConfig')
+      .content-wrapper-xs
+        .row.text-center
+          .col-xs-12(id="nexusSummary")
+  .container-fluid
+    table.table
+      tr
+        th Equipment Id
+        th Actual kW
+        th Actual Ton
+        th Actual kW/Ton
+        th Target kW/Ton
+        th Target/Actual
+      tr(ng-repeat='equipment in vm.summary track by $index')
+        td(ng-repeat='v in equipment track by $index') {{v}}

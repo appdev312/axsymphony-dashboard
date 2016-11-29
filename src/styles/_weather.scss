@@ -1,0 +1,31 @@
+.container-fluid.weather{
+  background-color: $light-gray;
+  padding: 25px 20px;
+  .location, .date{
+    p{
+      font-family: $light-font;
+      color: $dark-gray;
+      font-size: 15px;
+      letter-spacing: .5px;
+      margin-bottom: 2px;
+    }
+  }
+  .temp{
+    img{
+      display: inline-block;
+    }
+    p{
+      display: inline-block;
+      font-size: 24px;
+      margin-bottom: 0;
+    }
+  }
+  .time{
+    text-align: right;
+    p{
+      display: inline-block;
+      font-size: 24px;
+      margin-bottom: 0;
+    }
+  }
+}

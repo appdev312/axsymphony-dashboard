@@ -1,0 +1,160 @@
+.building-name{
+  p{
+    font-family: $light-font;
+    font-size: 26px;
+    color: $dark-gray;
+  }
+}
+
+.nexus-caption{
+  p{
+    font-family: $bold-font;
+    font-size: 32px;
+    color: $dark-gray;
+  }  
+}
+.nexus-number{
+  position: relative;
+  img{
+    width: 180px;
+    @media(max-width: $break-small){
+      width: 150px;
+    }
+  }
+  p{
+    color: $blue;
+    font-size: 180px;
+    display: inline-block;
+    margin: 0 0 0 20px;
+    line-height: 180px;
+    font-weight: bold;
+    @media(max-width: $break-small) {
+      font-size: 150px;
+      line-height: 150px;
+    }
+  }
+}
+.nexus-dial {
+  text-align: center;
+  width: 80%;
+  height: 80%;
+  display: inline;
+}
+canvas {
+  display: inline;
+}
+.delta{
+  img{
+    display: inline-block;
+  }
+  p{
+    display: inline-block;
+    font-family: $light-font;
+    color: $dark-gray;
+    font-size: 18px;
+    letter-spacing: .74px;
+    margin: 15px 0 0 10px;
+  }
+}
+.graphs{
+  p{
+    font-family: $light-font;
+    font-size: 18px;
+    color: $dark-gray;
+    text-transform: uppercase;
+    padding-left: 0px;
+    letter-spacing: 0.74px;
+
+  }
+  .delta{
+    padding-left: 0px;
+    img{
+      display: inline-block;
+    }
+    p{
+      display: inline-block;
+      font-family: $light-font;
+      color: $dark-gray;
+      font-size: 18px;
+      letter-spacing: .74px;
+      margin: 10px 0 0 0;
+      padding-left: 5px;
+      text-transform: lowercase;
+    }
+  }
+  @media(max-width: $break-small){
+    margin-top: 50px;
+  }
+}
+
+.savings{
+  width: 50%;
+  border: 1px solid $medium-gray;
+  border-radius: 2px;
+  margin: auto;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  p{
+    font-family: $light-font;
+    font-size: 16px;
+    letter-spacing: 0.74px;
+    text-transform: uppercase;
+  }
+  h1{
+    font-family: $bold-font;
+    font-size: 36px;
+    color: $green;
+    letter-spacing: 1.48px;
+  }
+  .energy{
+    border-bottom: 1px solid $medium-gray;
+    padding: 45px 0;
+    margin: auto;
+  }
+  .water{
+    padding: 45px 0;
+    margin: auto;
+  }
+  @media(max-width: $break-large){
+    width: 80%;
+  }
+  @media(max-width: $break-medium){
+    width: 90%;
+  }
+  @media(max-width: $break-small){
+    width: 100%;
+  }
+}
+
+.savings.lg{
+  width: 80%;
+  border: 1px solid $medium-gray;
+  border-radius: 2px;
+  margin: auto;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  p{
+    font-family: $light-font;
+    font-size: 16px;
+    letter-spacing: 0.74px;
+    text-transform: uppercase;
+  }
+  h1{
+    font-family: $bold-font;
+    font-size: 36px;
+    color: $green;
+    letter-spacing: 1.48px;
+  }
+  .energy{
+    padding: 45px 0;
+    margin: auto;
+    border-bottom: none;
+  }
+  .water{
+    padding: 45px 0;
+    margin: auto;
+  }
+  @media(max-width: $break-small){
+    width: 100%;
+  }
+}

@@ -1,0 +1,17 @@
+#watersources{
+  margin-top: 10px;
+
+  th.narrow {
+    width: 160px;
+  }
+
+  th, td {
+    text-align: center;
+  }
+}
+
+#watersourcechart {
+  .chart {
+    min-height: 150px !important;
+  }
+}

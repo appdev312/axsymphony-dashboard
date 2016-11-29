@@ -1,0 +1,43 @@
+nav.navbar(ng-controller="NavController as vm")
+  a(href='./')
+    img.logo(src='./assets/images/logo.png', alt='Logo')
+  ul.nav.pull-right.hidden-xs.hidden-sm
+    - var nav = {}; nav[title] = 'active'
+    li(class='#{nav.overview}')
+      span.icon-overview.vcenter
+      a.vcenter(href='./#/overview') Overview
+    li(class='#{nav.dashboard}')
+      span.icon-dashboard.vcenter
+      a.vcenter(href='./#/dashboard') Dashboard
+    li(class='#{nav.trends}')
+      span.icon-trends.vcenter
+      a.vcenter(href="./#/trends") Trends
+    li(class='#{nav.alarms}')
+      span.icon-alarms.vcenter
+      a.vcenter(href="./#/alarms") Notifications
+    li(class='#{nav.interventions}')
+      span.icon-warning.vcenter
+      a.vcenter(href="./#/interventions") Interventions
+    li(uib-dropdown="")
+      img.vcenter.user-img(ng-src='{{vm.userImage}}' uib-dropdown-toggle="")
+      ul.dropdown-menu-right(uib-dropdown-menu="")
+        li
+          a.vcenter(href="./#/logout" style="color: #2b669a; background: white none;") Logout
+  .nav-collapse.visible-xs-inline-block.visible-sm-inline-block.pull-right
+    a.menu-link.vcenter(href="#" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar") Menu
+#navbar.container-fluid.navbar-collapse.collapse(aria-expanded='false')
+  ul.nav.navbar-nav.mobile
+    li(class='#{nav.dashboard}')
+      span.icon-dashboard.vcenter
+      a.vcenter(href='./') Dashboard
+    li(class='#{nav.trends}')
+      span.icon-trends.vcenter
+      a.vcenter(href="/#/trends") Trends
+    li(class='#{nav.alarms}')
+      span.icon-alarms.vcenter
+      a.vcenter(href="#") Alarms
+    li(class='#{nav.settings}')
+      span.icon-warning.vcenter
+      a.vcenter(href="#") Interventions
+    li
+      img.vcenter(src='./assets/images/user-icon.svg')

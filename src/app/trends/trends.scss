@@ -1,0 +1,44 @@
+ul {
+  list-style-type: none;
+  padding-left:20px;
+}
+.collapsed ul {
+  display: none;
+}
+li {
+  outline: none;
+}
+li.collapsed:before {
+  display: inline-block;
+  width: 10px;
+}
+li a:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+.chart {
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chart-wrapper {
+  z-index: 0;
+}
+
+.chart-drop-empty {
+  border: 4px dashed darkcyan;
+}
+
+.chart-drop-full {
+  border: 1px solid darkcyan;
+}
+
+.selected {
+  font-weight: bold;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}

@@ -1,0 +1,56 @@
+extends ../layouts/layout
+
+block pageTitle
+  h1.text-center {{vm.siteInfo.siteName}}
+
+block main
+  .container-fluid
+    .content-wrapper-xs
+      .row.text-center
+        .col-lg-10.col-lg-offset-1
+          h1 Makeup Water Sources
+        .content-wrapper-xs#watersourcechart
+          highchart.chart.col-sm-8.col-sm-offset-2(config='vm.chartConfig')
+      .row#watersources
+        .container-fluid
+          table.table.table-striped.table-bordered
+            tr
+              th Source Name
+              th.narrow pH
+              th.narrow Alkalinity
+              th.narrow Hardness
+              th.narrow Total Hardness
+              th.narrow Calcium Hardness
+              th.narrow Phosphate
+              th.narrow Chloride
+              th.narrow Silica
+              th.narrow Sulphate
+              th.narrow Last Updated
+            tr(ng-repeat='source in vm.editableSources')
+              td
+                input(type='text', class='form-control', ng-model='source.sourceName', ng-disabled='!vm.editing')
+              td
+                input(type='number', class='form-control', ng-model='source.ph', ng-pattern='/^[0-9]{1,10}(\.[0-9]+)?$/', ng-disabled='!vm.editing')
+              td
+                input(type='number', class='form-control', ng-model='source.alkalinity', ng-pattern='/^[0-9]{1,10}(\.[0-9]+)?$/', ng-disabled='!vm.editing')
+              td
+                input(type='number', class='form-control', ng-model='source.hardness', ng-pattern='/^[0-9]{1,10}(\.[0-9]+)?$/', ng-disabled='!vm.editing')
+              td
+                input(type='number', class='form-control', ng-model='source.totalHardness', ng-pattern='/^[0-9]{1,10}(\.[0-9]+)?$/', ng-disabled='!vm.editing')
+              td
+                input(type='number', class='form-control', ng-model='source.calciumHardness', ng-pattern='/^[0-9]{1,10}(\.[0-9]+)?$/', ng-disabled='!vm.editing')
+              td
+                input(type='number', class='form-control', ng-model='source.phosphate', ng-pattern='/^[0-9]{1,10}(\.[0-9]+)?$/', ng-disabled='!vm.editing')
+              td
+                input(type='number', class='form-control', ng-model='source.chloride', ng-pattern='/^[0-9]{1,10}(\.[0-9]+)?$/', ng-disabled='!vm.editing')
+              td
+                input(type='number', class='form-control', ng-model='source.silica', ng-pattern='/^[0-9]{1,10}(\.[0-9]+)?$/', ng-disabled='!vm.editing')
+              td
+                input(type='number', class='form-control', ng-model='source.sulphate', ng-pattern='/^[0-9]{1,10}(\.[0-9]+)?$/', ng-disabled='!vm.editing')
+              td {{source.lastUpdated}}
+
+          button(class='btn btn-primary', ng-if='!vm.editing', ng-click='vm.startEditing()') Update
+          button(class='btn btn-primary', ng-if='vm.editing', ng-click='vm.save()', ng-disabled="form.$invalid") Save
+          button(class='btn btn-default', ng-if='vm.editing', ng-click='vm.cancelEditing()') Cancel
+
+          .errorMsgs {{vm.errors}}

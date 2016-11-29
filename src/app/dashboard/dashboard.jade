@@ -1,0 +1,53 @@
+extends ../layouts/layout
+
+block pageTitle
+  h1.text-center {{vm.siteInfo.siteName}}
+
+block main
+  .container-fluid
+    .content-wrapper-xs
+      .row.charts-container
+        .col-lg-10.col-lg-offset-1
+          .row.text-center
+            .col-lg-6.col-md-6
+              .row.text-center
+                #leftCanvas.col-xs-12.col-sm-4.col-lg-4.text-center.content-wrapper-xs
+                  multi-radient-circle(fs=30, r=85, w=15, val="vm.nexusData.energyEfficiency", txt-val="vm.nexusData.energyEfficiency", radient-colors="vm.someColors", title="ENERGY EFFICIENCY", scale=0.8)
+                #centerCanvas.col-xs-12.col-sm-4.text-center.content-wrapper-xs
+                  multi-radient-circle(fs=50, r=100, w=20, val="vm.nexusData.nexusNumber", txt-val="vm.nexusData.nexusNumber", radient-colors="vm.allBlueColors", title=null, scale=1)
+                #rightCanvas.col-xs-12.col-sm-4.col-lg-4.text-center.content-wrapper-xs
+                  multi-radient-circle(fs=30, r=50, w=15, val="vm.nexusData.waterEfficiency", txt-val="vm.nexusData.waterEfficiency", radient-colors="vm.someColors", title="WATER EFFICIENCY", scale=0.8)
+              .row.text-center
+                highchart#dash-performance-chart.chart.col-sm-8.col-sm-offset-2(config='vm.chartConfig')
+            .col-lg-6.col-md-6
+              #risk-indicators
+                h3 Risk Indicators
+                .row
+                  .col-md-4
+                    p CapEx:
+                    color-slider(point1=0.33, point2=0.66, ng-model="vm.riskIndicators.capEx")
+                  .col-md-4
+                    p OpEx:
+                    color-slider(point1=0.33, point2=0.66, ng-model="vm.riskIndicators.Opex")
+                  .col-md-4
+                    p Environmental:
+                    color-slider(point1=0.33, point2=0.66, ng-model="vm.riskIndicators.environmental")
+              br
+              #alerts-alarms
+                h3 Notifications
+                .row#notifications
+                  .col-lg-12
+                    events-table(data='vm.events', on-ack='vm.onAck')
+                .row#legend
+                  .container-fluid
+                    .row.text-center
+                      h3 Legend
+                    .row.text-center
+                      button(class='btn btn-danger btn-xs') ACK
+                      span(style='margin-right: 10px') &nbsp; Alarm condition - press to acknowledge
+                      button(class='btn btn-warning btn-xs', style='margin-left: 10px') ACK
+                      span &nbsp; Alert condition - press to acknowledge
+          .row.text-center
+            .col-lg-12.col-md-12
+              br
+              #sync-chart

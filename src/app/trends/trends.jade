@@ -1,0 +1,28 @@
+extends ../layouts/layout
+
+block pageTitle
+  h1.text-center {{vm.siteInfo.siteName}}
+
+block main
+  div
+    .container-fluid
+      .content-wrapper-xs
+        .row.text-center
+          .col-lg-10.col-lg-offset-1
+            h1 Trending
+      .row.charts-container
+        .col-lg-2.col-md-2
+          ul
+            li(ng-repeat='elem in vm.categories')
+              a
+                span(ng-show='elem.expand', ng-click='elem.expand = !elem.expand') ▼
+                span(ng-show='!elem.expand', ng-click='elem.expand = !elem.expand') ►
+                | {{ elem.name }}
+              ul
+                li(ng-show='elem.expand', ng-repeat='variable in elem.children', ng-drag='true', ng-drag-data='{parent:elem, node:variable}', ng-mousedown='$event.stopPropagation()', context-menu='vm.menuOptions', ng-class="{'selected': variable.selected}")
+                  a {{ variable.name }}
+        .col-lg-10.col-md-10.chart-wrapper(ng-class="{'chart-drop-full': vm.chartConfig.series.length > 0, 'chart-drop-empty': vm.chartConfig.series.length === 0}")
+          div(ng-drop='true', ng-drop-success='vm.onDropComplete($data)', ng-if='vm.chartConfig.series.length > 0')
+            highchart(config='vm.chartConfig')
+          .chart(ng-drop='true', ng-drop-success='vm.onDropComplete($data)', ng-if='vm.chartConfig.series.length === 0')
+            h1 Drag variables here

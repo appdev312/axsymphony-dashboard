@@ -1,0 +1,26 @@
+extends ../layouts/layout
+
+block pageTitle
+  h1.text-center {{vm.siteInfo.siteName}}
+
+block main
+  .container-fluid
+    .content-wrapper-xs
+      .row
+        .col-xs-12.col-sm-12.text-center
+          img(src='./assets/images/nexus_number_logo_onecolor_aqua.png', width='35%')
+      .row
+        .col-lg-10.col-lg-offset-1
+          .row#overviewSummary
+            #leftCanvas.col-xs-12.col-sm-4.col-lg-4.text-center.content-wrapper-xs
+              multi-radient-circle(fs=50, r=120, w=15, val="vm.nexusData.energyEfficiency", txt-val="vm.nexusData.energyEfficiency", radient-colors="vm.someColors", title="ENERGY EFFICIENCY", scale=0.8)
+              .text-center
+                a.btn.btn-info(href='#/energy-efficiency-summary') Energy Efficiency Summary
+            #centerCanvas.col-xs-12.col-sm-4.text-center.content-wrapper-xs
+              multi-radient-circle(fs=90, r=140, w=20, val="vm.nexusData.nexusNumber", txt-val="vm.nexusData.nexusNumber", radient-colors="vm.allBlueColors", title=null, scale=1)
+            #rightCanvas.col-xs-12.col-sm-4.col-lg-4.text-center.content-wrapper-xs
+              multi-radient-circle(fs=50, r=120, w=15, val="vm.nexusData.waterEfficiency", txt-val="vm.nexusData.waterEfficiency", radient-colors="vm.someColors", title="WATER EFFICIENCY", scale=0.8)
+              .text-center
+                a.btn.btn-info(href='#/water-efficiency-summary') Water Efficiency Summary
+          .row#overviewchart
+            highchart.chart.col-sm-8.col-sm-offset-2(config='vm.chartConfig')

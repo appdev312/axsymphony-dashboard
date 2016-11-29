@@ -1,0 +1,48 @@
+color-slider {
+  .color-slider {
+    padding-top: 15px;
+    position: relative;
+    margin-bottom: 10px;
+    
+    .slider-wrapper {
+      -webkit-box-shadow: 5px 5px 19px -2px rgba(0,0,0,0.6);
+      -moz-box-shadow: 5px 5px 19px -2px rgba(0,0,0,0.6);
+      box-shadow: 5px 5px 19px -2px rgba(0,0,0,0.6);
+      position: relative;
+      height: 20px;
+
+      .bar::before {
+        content: "\200B";
+      }
+
+      .bar {
+       position: absolute;
+       left: 0;
+       height: 20px;
+      }
+
+      #red-bar {
+        background-color: #ff6600;
+        width: 100%;
+      }
+
+      #yellow-bar {
+        background-color: #ffff80;
+      }
+
+      #green-bar {
+        background-color: #66ff66;
+      }
+    }
+
+    .pointer {
+      position: absolute;
+      top: 3px;
+      background-image: url(../assets/images/arrow-down.png);
+      background-size: 12px 15px;
+      width: 12px;
+      height: 15px;
+      z-index: 1;
+    }
+  }
+}

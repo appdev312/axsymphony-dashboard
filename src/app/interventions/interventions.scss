@@ -1,0 +1,39 @@
+#interventions-list{
+  tr {
+    cursor: pointer;
+  }
+
+  // TODO: review colors. Don't know how they are being decided
+  tr:not(:first-child):hover {
+    background-color: #2aabd2;
+    color: white;
+  }
+
+  tr.selected {
+    background-color: #2b669a;
+    color: white;
+    outline: none;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  th, td {
+    text-align: center;
+  }
+}
+
+#intervention-detail {
+  input, select {
+    font-family: 'Helvetica Neue', 'Helvetica-Light', Arial;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  th, td {
+    text-align: center;
+  }
+}

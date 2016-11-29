@@ -1,0 +1,106 @@
+extends ../layouts/layout
+
+block pageTitle
+  h1.text-center {{vm.siteInfo.siteName}}
+
+block main
+  .container-fluid
+    .content-wrapper-xs
+      .row.text-center
+        .col-lg-10.col-lg-offset-1
+          h1 Interventions
+      .row.charts-container
+        .col-lg-4.col-md-4
+          #interventions-list
+            h3 Interventions List
+            table.table.table-striped.table-bordered
+              tr
+                th Name
+                th Active?
+                th Last Executed
+              tr(ng-repeat='intervention in vm.interventions', ng-click='vm.selectIntervention(intervention)', ng-class='{selected: intervention == vm.selectedIntervention}')
+                td {{intervention.name}}
+                td {{intervention.active}}
+                td {{intervention.lastExecuted}}
+
+        .col-lg-8.col-md-8
+          #intervention-detail(ng-if='vm.selectedIntervention')
+            h3 Intervention Detail
+
+            form.form-horizontal(name='form')
+              .form-group
+                label(for='name', class='col-sm-2 control-label') Name
+                .col-sm-4
+                  input(type='text', id='name', name='name' class='form-control' ng-model='vm.editableIntervention.name', ng-disabled='!vm.editing')
+
+                .col-sm-2
+                  .checkbox
+                    label
+                      input(type='checkbox', name='active' ng-model='vm.editableIntervention.active', ng-disabled='!vm.editing')
+                      | &nbsp; Active?
+
+              .form-group
+                label(for='description', class='col-sm-2 control-label') Description
+                .col-sm-10
+                  textarea(id='description', name='description', class='form-control', rows='4' ng-model='vm.editableIntervention.description', ng-disabled='!vm.editing')
+
+              label(class='col-sm-2 control-label') Trigger Conditions
+              table.table.table-striped.table-bordered(id='triggerConditions')
+                tr
+                  th Variable Tag
+                  th Condition
+                  th Value
+                  th AND
+                  th OR
+                  th
+                    button(class='btn btn-info btn-xs', ng-if='vm.editing', ng-click='vm.addTrigger()') Add
+                tr(ng-repeat='trigger in vm.editableIntervention.triggerConditions')
+                  td
+                    input(type='text', class='form-control', ng-model='trigger.variable', ng-disabled='!vm.editing')
+                  td
+                    select(class='form-control', ng-disabled='!vm.editing', ng-model='trigger.condition')
+                      option &lt;
+                      option &lt;=
+                      option ==
+                      option &gt;=
+                      option &gt;
+                      option &lt;&gt;
+                  td(style='width: 160px')
+                    // TODO: review all validations
+                    input(type='number', class='form-control', ng-model='trigger.value', ng-pattern='/^[0-9]{1,10}(\.[0-9]+)?$/', ng-disabled='!vm.editing')
+                  td
+                    .radio
+                      input(type='radio', ng-model='trigger.andOr', value='&', ng-disabled='!vm.editing')
+                  td
+                    .radio
+                      input(type='radio', ng-model='trigger.andOr', value='|', ng-disabled='!vm.editing')
+                  td
+                    button(class='btn btn-danger btn-xs', ng-if='vm.editing', ng-click='vm.removeTrigger(trigger)') Remove
+
+              .row
+                .col-lg-8.col-md-8
+                  label(class='col-sm-2 control-label') Response
+                  table.table.table-striped.table-bordered(id='response')
+                    tr
+                      th Action
+                      th Variable
+                      th Value
+                      th
+                        button(class='btn btn-info btn-xs', ng-if='vm.editing', ng-click='vm.addResponse()') Add
+                    tr(ng-repeat='response in vm.editableIntervention.responses')
+                      td
+                        select(class='form-control', ng-disabled='!vm.editing', ng-model='response.action')
+                          option SET
+                          option ALERT
+                      td
+                        input(type='text', class='form-control', ng-model='response.variable', ng-disabled='!vm.editing')
+                      td(style='width: 160px')
+                        input(type='number', class='form-control', ng-model='response.value', ng-pattern='/^[0-9]{1,10}(\.[0-9]+)?$/', ng-disabled='!vm.editing')
+                      td
+                        button(class='btn btn-danger btn-xs', ng-if='vm.editing', ng-click='vm.removeResponse(response)') Remove
+
+              button(class='btn btn-primary', ng-if='!vm.editing', ng-click='vm.startEditing()') Edit
+              button(class='btn btn-primary', ng-if='vm.editing', ng-click='vm.saveIntervention()', ng-disabled="form.$invalid") Save
+              button(class='btn btn-default', ng-if='vm.editing', ng-click='vm.cancelEditing()') Cancel
+
+              .errorMsgs {{vm.errors}}

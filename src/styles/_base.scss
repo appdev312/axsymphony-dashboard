@@ -1,0 +1,79 @@
+
+// colors
+$dark-gray: #3A3A3A;
+$medium-gray: #D6D6D6;
+$light-gray: #F6F6F6;
+$blue: #02B0E7;
+$dark-blue: #198AB8;
+$green: #21C921;
+$background-gray: #f2f2f2;
+
+
+// fonts
+$light-font: 'helvetica-light', Helvetica, sans-serif;
+$bold-font: 'helvetica-bold', Helvetica, sans-serif;
+
+// breakpoints
+$break-xsmall: 400px;
+$break-small: 767px;
+$break-medium: 991px;
+$break-large: 1340px;
+
+// utility classes
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+.dark{
+  background-color: $light-gray;
+}
+
+// wrappers
+.content-wrapper-xs{
+  padding: 25px 0;
+  @media(max-width: $break-small){
+    padding: 20px 0;
+  }
+}
+
+.content-wrapper-sm{
+  padding: 50px 0;
+  @media(max-width: $break-small){
+    padding: 20px 0;
+  }
+}
+
+.content-wrapper-md{
+  padding: 100px 0;
+  @media(max-width: $break-small){
+    padding: 50px 0;
+  }
+}
+
+.content-wrapper-lg{
+  padding: 150px 0;
+  @media(max-width: $break-small){
+    padding: 50px 0;
+  }
+}
+
+hr{
+  border-top: 1px solid $medium-gray;
+  margin-top: 0;
+}
+
+vr-left{
+  border-left: 1px solid $medium-gray;
+  margin-top: 0;
+}
+
+vr-right{
+  border-left: 1px solid $medium-gray;
+  margin-top: 0;
+}
+
+
+body { 
+  background: $background-gray !important;
+}

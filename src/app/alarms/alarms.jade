@@ -1,0 +1,23 @@
+extends ../layouts/layout
+
+block pageTitle
+  h1.text-center {{vm.siteInfo.siteName}}
+
+block main
+  .container-fluid
+    .content-wrapper-xs
+      .row.text-center
+        .col-lg-10.col-lg-offset-1
+          h1 Notifications
+    .row#notifications
+      .col-lg-8.col-lg-offset-2
+        events-table(data='vm.events', on-ack='vm.onAck')
+    .row#legend
+      .container-fluid
+        .row.text-center
+          h3 Legend
+        .row.text-center
+          button(class='btn btn-danger btn-xs') ACK
+          span(style='margin-right: 10px') &nbsp; Alarm condition - press to acknowledge
+          button(class='btn btn-warning btn-xs', style='margin-left: 10px') ACK
+          span &nbsp; Alert condition - press to acknowledge

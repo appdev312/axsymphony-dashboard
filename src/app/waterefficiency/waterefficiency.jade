@@ -1,0 +1,28 @@
+extends ../layouts/layout
+
+block pageTitle
+  h1.text-center {{vm.siteInfo.siteName}}
+
+block main
+
+  div
+    .container-fluid
+      .content-wrapper-xs
+        .row.text-center
+          .col-lg-10.col-lg-offset-1
+            h1 Water Efficiency
+      .content-wrapper-xs
+        highchart.chart.col-sm-8.col-sm-offset-2(config="vm.chartWaterEfficiencyHistory")
+      .content-wrapper-xs
+        .row.text-center
+          .col-xs-12(id="nexusSummary")
+    .container-fluid
+      table.table.col-sm-12
+        tr
+          th.text-center.col-sm-2 Makeup Source
+          th.text-center.col-sm-2 Conductivity
+          th.text-center.col-sm-2 Actual Gal/Ton-Hr
+          th.text-center.col-sm-2 Target Gal/Ton-Hr
+          th.text-center.col-sm-2 Efficiency (%)
+        tr(ng-repeat='source in vm.data.table track by $index')
+          td.text-center.col-sm-2(ng-repeat='v in source track by $index') {{v}}

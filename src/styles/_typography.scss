@@ -1,0 +1,32 @@
+h1{
+  font-family: $light-font;
+  color: $dark-gray;
+  font-size: 26px;
+}
+
+h1.last{
+  @media(max-width: $break-small){
+    margin-top: 60px;
+  }
+}
+
+h2{
+  font-family: $light-font;
+  color: $dark-gray;
+  font-size: 20px;
+  margin-bottom: 3px;
+}
+
+h3{
+  font-family: $bold-font;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: $dark-gray;
+}
+
+//p{
+//  font-family: $light-font;
+//  color: $dark-gray;
+//  font-size: 16px;
+//}

@@ -1,0 +1,19 @@
+#overviewchart {
+  .chart {
+    min-height: 150px !important;
+  }
+}
+
+#overviewSummary {
+  #leftCanvas, #rightCanvas {
+    canvas {
+      height: 20vh;
+    }
+  }
+
+  #centerCanvas {
+    canvas {
+      height: 25vh;
+    }
+  }
+}

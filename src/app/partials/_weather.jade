@@ -1,0 +1,18 @@
+div.container-fluid.weather
+  .row.hidden-xs
+    div.col-sm-3(ng-controller="WeatherController as vm")
+      .location
+        p {{vm.weatherData.current_observation.display_location.full}}
+      .temp
+        img.vcenter(ng-src="{{vm.weatherData.current_observation.icon_url}}", alt="")
+        p.vcenter(ng-if="vm.weatherData.current_observation.temp_f") {{vm.weatherData.current_observation.temp_f}}° F
+    div.col-sm-6
+      .title
+        block pageTitle   
+    div.col-sm-3(ng-controller="TimeController as vm")
+      .pull-right
+        .time
+          p {{ vm.clock | date:'EEE MM/dd/yyyy' }}
+        .time
+          p {{ vm.clock | date:'hh:mm:ss a' }}
+     
